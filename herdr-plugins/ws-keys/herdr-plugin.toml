@@ -1,0 +1,32 @@
+id = "dotfiles.ws-keys"
+name = "Workspace Row Keys"
+version = "0.1.0"
+min_herdr_version = "0.8.0"
+description = "Reports the qwerty-row key (q..p) of each workspace as $key metadata for sidebar rows"
+platforms = ["macos"]
+
+# посев при загрузке плагина
+[[startup]]
+command = ["sh", "ws-keys.sh"]
+
+# пересчёт при любом изменении списка воркспейсов
+# (workspace.metadata_updated хуки не дергает — само-петли нет)
+[[events]]
+on = "workspace.created"
+command = ["sh", "ws-keys.sh"]
+
+[[events]]
+on = "workspace.closed"
+command = ["sh", "ws-keys.sh"]
+
+[[events]]
+on = "workspace.moved"
+command = ["sh", "ws-keys.sh"]
+
+[[events]]
+on = "workspace.reordered"
+command = ["sh", "ws-keys.sh"]
+
+[[events]]
+on = "workspace.renamed"
+command = ["sh", "ws-keys.sh"]

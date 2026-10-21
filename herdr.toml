@@ -1,0 +1,195 @@
+onboarding = false
+# herdr — config.toml (симлинк из ~/dotfiles/herdr.toml)
+# reload: herdr server reload-config; дефолты: herdr --default-config
+
+[theme]
+name = "terminal" # палитра хост-терминала (zenwritten в iTerm)
+
+[theme.custom]
+accent = "bright blue" # ANSI-слот 12 профиля (#a7abf2), следует за палитрой iTerm
+
+[keys]
+prefix = "ctrl+b" # ctrl+space занят переключением раскладок macOS
+
+# --- фокус и раскладка панелей -----------------------------------------
+focus_pane_left = "prefix+h"
+focus_pane_down = "prefix+j"
+focus_pane_up = "prefix+k"
+focus_pane_right = "prefix+l"
+
+split_vertical = "prefix+v"        # панель справа
+close_pane = "prefix+d"
+swap_pane_left = "prefix+shift+h"
+swap_pane_down = "prefix+shift+j"
+swap_pane_up = "prefix+shift+k"
+swap_pane_right = "prefix+shift+l"
+
+resize_pane_left = "prefix+shift+left"
+resize_pane_down = "prefix+shift+down"
+resize_pane_up = "prefix+shift+up"
+resize_pane_right = "prefix+shift+right"
+
+# --- воркспейсы ----------------------------------------------------------
+# f — как find-группа в nvim; ↑↓ — колонка воркспейсов в сайдбаре
+previous_workspace = "prefix+up"
+next_workspace = "prefix+down"
+workspace_picker = "prefix+f"
+new_workspace = "prefix+shift+n"
+close_workspace = "prefix+shift+d"
+
+# --- сессия и сервис ------------------------------------------------------
+help = "prefix+?"
+open_notification_target = "prefix+n"
+toggle_sidebar = "prefix+b"
+detach = "prefix+x"
+
+# --- отключено ------------------------------------------------------------
+# табы не используем; zoom/copy_mode/sidebar/агенты-ряды/последняя панель —
+# на всякий случай погашены, чтобы ничего не сработало случайно
+new_tab = ""
+rename_tab = ""
+close_tab = ""
+previous_tab = ""
+next_tab = ""
+move_tab_previous = ""
+move_tab_next = ""
+switch_tab = ""
+switch_workspace = ""    # indexed-синтаксис не умеет буквенные ряды — ряд q..p ниже
+zoom = ""
+copy_mode = ""
+last_pane = ""
+cycle_pane_next = ""
+cycle_pane_previous = ""
+open_worktree = ""
+remove_worktree = ""
+previous_agent = ""
+next_agent = ""
+focus_agent = ""
+remote_image_paste = ""  # ctrl+v вставка картинок, активна только в --remote
+reload_config = ""       # из шелла: herdr server reload-config
+resize_mode = ""         # серии ресайза не нужны, есть shift+стрелки
+rename_workspace = ""
+new_worktree = ""        # git worktree — решает агент, не руками
+goto = ""                # цифры 1..9 внутри не перенастраиваются
+settings = ""            # всё есть в config.toml
+edit_scrollback = ""     # мышкой
+rename_pane = ""
+split_horizontal = ""    # h занят под навигацию
+
+# --- воркспейсы: prefix+q..p = ws 1..10 -----------------------------------
+[[keys.command]]
+key = "prefix+q"
+type = "shell"
+command = "herdr-tab ws 1"
+
+[[keys.command]]
+key = "prefix+w"
+type = "shell"
+command = "herdr-tab ws 2"
+
+[[keys.command]]
+key = "prefix+e"
+type = "shell"
+command = "herdr-tab ws 3"
+
+[[keys.command]]
+key = "prefix+r"
+type = "shell"
+command = "herdr-tab ws 4"
+
+[[keys.command]]
+key = "prefix+t"
+type = "shell"
+command = "herdr-tab ws 5"
+
+[[keys.command]]
+key = "prefix+y"
+type = "shell"
+command = "herdr-tab ws 6"
+
+[[keys.command]]
+key = "prefix+u"
+type = "shell"
+command = "herdr-tab ws 7"
+
+[[keys.command]]
+key = "prefix+i"
+type = "shell"
+command = "herdr-tab ws 8"
+
+[[keys.command]]
+key = "prefix+o"
+type = "shell"
+command = "herdr-tab ws 9"
+
+[[keys.command]]
+key = "prefix+p"
+type = "shell"
+command = "herdr-tab ws 10"
+
+# --- унести панель в ws 1..10: prefix+shift+q..p --------------------------
+# уносит только текущую панель — переноса целого таба в API herdr нет
+[[keys.command]]
+key = "prefix+shift+q"
+type = "shell"
+command = "herdr-tab move 1"
+
+[[keys.command]]
+key = "prefix+shift+w"
+type = "shell"
+command = "herdr-tab move 2"
+
+[[keys.command]]
+key = "prefix+shift+e"
+type = "shell"
+command = "herdr-tab move 3"
+
+[[keys.command]]
+key = "prefix+shift+r"
+type = "shell"
+command = "herdr-tab move 4"
+
+[[keys.command]]
+key = "prefix+shift+t"
+type = "shell"
+command = "herdr-tab move 5"
+
+[[keys.command]]
+key = "prefix+shift+y"
+type = "shell"
+command = "herdr-tab move 6"
+
+[[keys.command]]
+key = "prefix+shift+u"
+type = "shell"
+command = "herdr-tab move 7"
+
+[[keys.command]]
+key = "prefix+shift+i"
+type = "shell"
+command = "herdr-tab move 8"
+
+[[keys.command]]
+key = "prefix+shift+o"
+type = "shell"
+command = "herdr-tab move 9"
+
+[[keys.command]]
+key = "prefix+shift+p"
+type = "shell"
+command = "herdr-tab move 10"
+
+[ui]
+hide_tab_bar_when_single_tab = true
+sidebar_start_collapsed = true
+prompt_new_tab_name = false         # случайный таб не дёргает диалог имени
+status_indicators = "symbols"       # глифы по форме + цвет состояния
+pane_gaps = false                   # панели делятся общим разделителем, без зазоров
+pane_outer_borders = false          # без внешней рамки — tmux-стиль
+
+[ui.sound]
+enabled = false # без звука на done/needs-attention
+
+[ui.sidebar.spaces]
+# $key = "[r] service-cascade" одним токеном от ws-keys (одинарный пробел)
+rows = [["state_icon", "$key"], ["branch", "git_status"]]

@@ -1,0 +1,18 @@
+[init]
+	defaultBranch = main
+
+[user]
+	useConfigOnly = true
+
+# Identity routing (includeIf by remote) and per-host credential helpers live
+# in the private credentials repo; a missing file is silently ignored by git,
+# so this config stays usable without it.
+[include]
+	path = ~/credentials/git/gitconfig
+
+[alias]
+	pu = !git push -u origin $(git rev-parse --abbrev-ref HEAD)
+	puf = !git push -u --force origin $(git rev-parse --abbrev-ref HEAD)
+	pul = !git pull origin $(git rev-parse --abbrev-ref HEAD)
+	co = checkout
+	br = branch

@@ -1,0 +1,111 @@
+# AeroSpace config. Docs: https://nikitabobko.github.io/AeroSpace/guide
+config-version = 2
+
+start-at-login = false
+default-root-container-layout = 'tiles'
+default-root-container-orientation = 'auto'
+
+# Mouse follows focus when monitor changes
+on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+
+# Normalizations
+enable-normalization-flatten-containers = true
+enable-normalization-opposite-orientation-for-nested-containers = true
+
+persistent-workspaces = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+
+# Закрепляем воркспейсы за мониторами: 1-5 на внешнем Mi Monitor, 6-0 на встроенном.
+# Значение — паттерн имени монитора. Если монитор отключён, его воркспейсы
+# временно переезжают на оставшийся экран и возвращаются при переподключении.
+[workspace-to-monitor-force-assignment]
+1 = 'Mi Monitor'
+2 = 'Mi Monitor'
+3 = 'Mi Monitor'
+4 = 'Mi Monitor'
+5 = 'Mi Monitor'
+6 = 'Built-in Retina Display'
+7 = 'Built-in Retina Display'
+8 = 'Built-in Retina Display'
+9 = 'Built-in Retina Display'
+0 = 'Built-in Retina Display'
+
+# New windows always tile, never stack into accordion
+[[on-window-detected]]
+if = 'true'
+run = ['layout tiling']
+
+[key-mapping]
+preset = 'qwerty'
+
+# Gaps between windows (inner) and screen edges (outer)
+[gaps]
+inner.horizontal = 10
+inner.vertical = 10
+outer.left = 10
+outer.bottom = 10
+outer.top = 10
+outer.right = 10
+
+[mode.main.binding]
+# Apps
+alt-c = 'exec-and-forget open -n -a iTerm'
+
+# Group focused window with right neighbor into a nested container
+alt-slash = 'join-with right'
+
+# Toggle orientation of the parent container (horizontal <-> vertical)
+alt-backslash = 'layout h_tiles v_tiles'
+
+# Focus (vim-style)
+alt-h = 'focus left'
+alt-j = 'focus down'
+alt-k = 'focus up'
+alt-l = 'focus right'
+
+# Move window
+alt-shift-h = 'move left'
+alt-shift-j = 'move down'
+alt-shift-k = 'move up'
+alt-shift-l = 'move right'
+
+# Resize (enters resize mode)
+alt-s = 'mode resize'
+
+# Switch workspace
+alt-q = 'workspace 1'
+alt-w = 'workspace 2'
+alt-e = 'workspace 3'
+alt-r = 'workspace 4'
+alt-t = 'workspace 5'
+alt-y = 'workspace 6'
+alt-u = 'workspace 7'
+alt-i = 'workspace 8'
+alt-o = 'workspace 9'
+alt-p = 'workspace 0'
+
+# Move window to workspace
+alt-shift-q = 'move-node-to-workspace 1'
+alt-shift-w = 'move-node-to-workspace 2'
+alt-shift-e = 'move-node-to-workspace 3'
+alt-shift-r = 'move-node-to-workspace 4'
+alt-shift-t = 'move-node-to-workspace 5'
+alt-shift-y = 'move-node-to-workspace 6'
+alt-shift-u = 'move-node-to-workspace 7'
+alt-shift-i = 'move-node-to-workspace 8'
+alt-shift-o = 'move-node-to-workspace 9'
+alt-shift-p = 'move-node-to-workspace 0'
+
+alt-tab = 'workspace-back-and-forth'
+alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
+
+# Reset: flatten nested containers (fix broken layouts)
+alt-shift-space = 'flatten-workspace-tree'
+
+# Resize mode: h/l — width, j/k — height, esc/enter — exit
+[mode.resize.binding]
+h = 'resize width -50'
+j = 'resize height +50'
+k = 'resize height -50'
+l = 'resize width +50'
+esc = 'mode main'
+enter = 'mode main'
