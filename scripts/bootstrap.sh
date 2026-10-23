@@ -120,6 +120,8 @@ fi
 if [ ! -d "$HOME/.pi/agent/.git" ]; then
     git clone https://github.com/s3nn1k/pi-agent.git "$HOME/.pi/agent"
 fi
+# grafana MCP (uvx mcp-grafana): прогрев кэша uv — иначе первая pi-сессия ждёт ~16 MB скачивания
+uvx mcp-grafana --help >/dev/null 2>&1 || echo "warn: mcp-grafana prewarm failed"
 
 clone_or_pull https://github.com/s3nn1k/pi-sandbox.git "$HOME/pi-sandbox"
 
@@ -237,4 +239,5 @@ echo "manual steps:
   1. auth.json -> ~/.pi/agent/auth.json (секрет; руками с прежней машины/менеджера паролей)
   2. Happ: логин (TUN-режим и обход локальных сетей — см. ~/credentials/README.md)
   3. AirPlay-ресивер OFF: System Settings -> General -> AirDrop & Handoff (порты 5000/7000)
-  4. токены агента: ~/credentials/agents-credentials/git-credentials (git-credential-store)"
+  4. токены агента: ~/credentials/agents-credentials/git-credentials (git-credential-store)
+  5. mcp.json -> ~/.pi/agent/mcp.json (grafana-mcp; токен сервис-аккаунта из Grafana)"
