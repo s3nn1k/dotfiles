@@ -1,32 +1,98 @@
 id = "dotfiles.ws-keys"
 name = "Workspace Row Keys"
-version = "0.1.0"
-min_herdr_version = "0.8.0"
+version = "0.2.0"
+min_herdr_version = "0.9.1"
 description = "Reports the qwerty-row key (q..p) of each workspace as $key metadata for sidebar rows"
 platforms = ["macos"]
 
 # посев при загрузке плагина
 [[startup]]
-command = ["sh", "ws-keys.sh"]
+command = ["python3", "ws-keys.py"]
 
-# пересчёт при любом изменении списка воркспейсов
-# (workspace.metadata_updated хуки не дергает — само-петли нет)
 [[events]]
 on = "workspace.created"
-command = ["sh", "ws-keys.sh"]
+command = ["python3", "ws-keys.py"]
+
+[[events]]
+on = "workspace.updated"
+command = ["python3", "ws-keys.py"]
 
 [[events]]
 on = "workspace.closed"
-command = ["sh", "ws-keys.sh"]
-
-[[events]]
-on = "workspace.moved"
-command = ["sh", "ws-keys.sh"]
-
-[[events]]
-on = "workspace.reordered"
-command = ["sh", "ws-keys.sh"]
+command = ["python3", "ws-keys.py"]
 
 [[events]]
 on = "workspace.renamed"
-command = ["sh", "ws-keys.sh"]
+command = ["python3", "ws-keys.py"]
+
+[[events]]
+on = "workspace.moved"
+command = ["python3", "ws-keys.py"]
+
+[[events]]
+on = "workspace.reordered"
+command = ["python3", "ws-keys.py"]
+
+[[events]]
+on = "workspace.focused"
+command = ["python3", "ws-keys.py"]
+
+[[events]]
+on = "worktree.created"
+command = ["python3", "ws-keys.py"]
+
+[[events]]
+on = "worktree.opened"
+command = ["python3", "ws-keys.py"]
+
+[[events]]
+on = "worktree.removed"
+command = ["python3", "ws-keys.py"]
+
+[[events]]
+on = "tab.created"
+command = ["python3", "ws-keys.py"]
+
+[[events]]
+on = "tab.closed"
+command = ["python3", "ws-keys.py"]
+
+[[events]]
+on = "tab.renamed"
+command = ["python3", "ws-keys.py"]
+
+[[events]]
+on = "tab.moved"
+command = ["python3", "ws-keys.py"]
+
+[[events]]
+on = "tab.focused"
+command = ["python3", "ws-keys.py"]
+
+[[events]]
+on = "pane.created"
+command = ["python3", "ws-keys.py"]
+
+[[events]]
+on = "pane.closed"
+command = ["python3", "ws-keys.py"]
+
+[[events]]
+on = "pane.focused"
+command = ["python3", "ws-keys.py"]
+
+[[events]]
+on = "pane.moved"
+command = ["python3", "ws-keys.py"]
+
+[[events]]
+on = "pane.exited"
+command = ["python3", "ws-keys.py"]
+
+[[events]]
+on = "pane.agent_detected"
+command = ["python3", "ws-keys.py"]
+
+[[events]]
+on = "pane.agent_status_changed"
+command = ["python3", "ws-keys.py"]
