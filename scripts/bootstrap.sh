@@ -217,7 +217,7 @@ for vault_name in personal work; do
 done
 
 # --- NeoKeePass (nkp): encrypted password vault tool ---
-NKP="$HOME/projects/nkp"
+NKP="$HOME/projects/personal/nkp"
 clone_or_pull https://github.com/s3nn1k/nkp.git "$NKP"
 make -C "$NKP" install
 NKP_VAULT="$HOME/credentials/nkp" "$HOME/.local/bin/nkp" info main >/dev/null \

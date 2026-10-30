@@ -65,5 +65,5 @@ listed here.
   `~/.config/zenwritten_dark`
 - [obsidian-config](https://github.com/s3nn1k/obsidian-config) → `~/.config/obsidian`
   (shared Obsidian config, symlinked into the vaults as `.obsidian`)
-- [nkp](https://github.com/s3nn1k/nkp) → `~/projects/nkp` (encrypted password vault tool
+- [nkp](https://github.com/s3nn1k/nkp) → `~/projects/personal/nkp` (encrypted password vault tool
   built from source; bases live outside the public repos)
